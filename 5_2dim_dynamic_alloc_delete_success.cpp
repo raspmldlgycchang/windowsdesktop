@@ -53,7 +53,7 @@ HandleManager::~HandleManager() {
 		for (unsigned int i = 0; i < m_max_count; i++) {
 			if (p_handle->h) {
 				delete[] p_handle->p_string;
-				p_handle++;//sizeof(HandleData)¸¸Å­ Áõ°¡
+				p_handle++;//sizeof(HandleData)ë§Œí¼ ì¦ê°€
 			}
 		}
 		delete[] mp_users[j];
@@ -70,7 +70,7 @@ HANDLE HandleManager::SetString(const char* ap_string)
 		p_handle = &mp_users[j][0];
 		for (i = 0; i < m_max_count; i++) {
 			if (p_handle->h == 0)	break;
-			//p_handle++;means Æ÷ÀÎÅÍÀÚ·áÇü¸¸Å­ Áõ°¡(sizeof(HandleData)¸¸Å­ Áõ°¡)
+			//p_handle++;means í¬ì¸í„°ìë£Œí˜•ë§Œí¼ ì¦ê°€(sizeof(HandleData)ë§Œí¼ ì¦ê°€)
 			else
 			{
 				p_handle++;
@@ -88,7 +88,7 @@ HANDLE HandleManager::SetString(const char* ap_string)
 			p_handle = &mp_users[j++][0];
 			for (i = 0; i < m_max_count; i++) {
 				if (p_handle->h == 0)	break;
-				//p_handle++;means Æ÷ÀÎÅÍÀÚ·áÇü¸¸Å­ Áõ°¡(sizeof(HandleData)¸¸Å­ Áõ°¡)
+				//p_handle++;means í¬ì¸í„°ìë£Œí˜•ë§Œí¼ ì¦ê°€(sizeof(HandleData)ë§Œí¼ ì¦ê°€)
 				else
 				{
 					p_handle++;
@@ -103,10 +103,10 @@ HANDLE HandleManager::SetString(const char* ap_string)
 			}
 			else {
 				p_handle = mp_users[j++];
-				cout << "¾ÆÁ÷ Áõ°¡ÇÒ »ç¿ëÀÚ ¼ö°¡ ³²¾Ò½À´Ï´Ù" << endl;
+				cout << "ì•„ì§ ì¦ê°€í•  ì‚¬ìš©ì ìˆ˜ê°€ ë‚¨ì•˜ìŠµë‹ˆë‹¤" << endl;
 				for (i = 0; i < m_max_count; i++) {
 					if (p_handle->h == 0)	break;
-					//p_handle++;means Æ÷ÀÎÅÍÀÚ·áÇü¸¸Å­ Áõ°¡(sizeof(HandleData)¸¸Å­ Áõ°¡)
+					//p_handle++;means í¬ì¸í„°ìë£Œí˜•ë§Œí¼ ì¦ê°€(sizeof(HandleData)ë§Œí¼ ì¦ê°€)
 					else
 					{
 						p_handle++;
@@ -124,7 +124,7 @@ HANDLE HandleManager::SetString(const char* ap_string)
 		}
 		else
 		{
-			cout << "Á¤ÇØÁÖ½Å »ç¿ëÀÚ¼ö°¡ ³Ñ¾ú½À´Ï´Ù" << endl;
+			cout << "ì •í•´ì£¼ì‹  ì‚¬ìš©ììˆ˜ê°€ ë„˜ì—ˆìŠµë‹ˆë‹¤" << endl;
 			return 0xFFFFFFFF;
 		}
 	}
@@ -138,8 +138,8 @@ void HandleManager::printString(HANDLE h_str)
 		p_handle = &mp_users[j][0];
 		for (i = 0; i < m_max_user_cnt; i++) {
 			if (p_handle->h == h_str) {
-				cout << "ÀÏÄ¡ÇÏ´Â ¸Ş¸ğ¸®ÁÖ¼Ò¸¦ Ã£¾Ò°í ¹İÈ¯ÇÕ´Ï´Ù" << endl;
-				cout << p_handle->p_string << ": printStringÇÔ¼ö ¿äÃ»ÇÏ½Å ¹®ÀÚ¿­ÀÔ´Ï´Ù" << endl;
+				cout << "ì¼ì¹˜í•˜ëŠ” ë©”ëª¨ë¦¬ì£¼ì†Œë¥¼ ì°¾ì•˜ê³  ë°˜í™˜í•©ë‹ˆë‹¤" << endl;
+				cout << p_handle->p_string << ": printStringí•¨ìˆ˜ ìš”ì²­í•˜ì‹  ë¬¸ìì—´ì…ë‹ˆë‹¤" << endl;
 				return;
 			}
 			else if (i < m_max_count)
@@ -149,19 +149,19 @@ void HandleManager::printString(HANDLE h_str)
 		}
 		
 	}
-	cout << "ÇÚµé°ª°ú ÀÏÄ¡ÇÏ´Â ¸Ş¸ğ¸® ÁÖ¼Ò°¡ ¾ø½À´Ï´Ù" << endl;
+	cout << "í•¸ë“¤ê°’ê³¼ ì¼ì¹˜í•˜ëŠ” ë©”ëª¨ë¦¬ ì£¼ì†Œê°€ ì—†ìŠµë‹ˆë‹¤" << endl;
 }
 int main(void)
 {
 	const int MAX_LEN = 240;
 	int max_user_cnt=2, max_count=2;
-	const char* ap_string = "¿ì¸®µ¿µ¿ÀÌ°¡Á©Á¶¾ÆÇÏ´Â°í¿Ë";
+	const char* ap_string = "ì œê°€ì¢‹ì•„í•˜ëŠ”ë””ì €íŠ¸ëŠ”";
 	HandleManager handle_user_lists(max_user_cnt, max_count);
 	HANDLE h_user1_str1=handle_user_lists.SetString(ap_string);
-	char ap_str_tmp[MAX_LEN] = "Ä¿ÇÇ¸À¿ìÀ¯ÁÁ¾Æ";
+	char ap_str_tmp[MAX_LEN] = "ì»¤í”¼ë§›ìš°ìœ ì¢‹ì•„";
 	ap_string = ap_str_tmp;
 	HANDLE h_user1_str2 = handle_user_lists.SetString(ap_string);
-	strcpy_s(ap_str_tmp, 17, "µş±â¸ÀÄÉÀÌÅ©ÁÁ¾Æ");
+	strcpy_s(ap_str_tmp, 17, "ë”¸ê¸°ë§›ì¼€ì´í¬ì¢‹ì•„");
 	ap_string = ap_str_tmp;
 	HANDLE h_user2_str1 = handle_user_lists.SetString(ap_string);
 	handle_user_lists.printString(h_user1_str1);
